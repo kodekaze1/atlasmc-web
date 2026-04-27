@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Download — Atlasmc" description="Download Atlasmc for Windows, macOS, and Linux. Free, open source, Apache 2.0.">
+  <section class="max-w-4xl mx-auto px-6 pt-16 pb-10">
+    <h1 class="text-4xl font-bold tracking-tight">Download</h1>
+    <p class="mt-4 text-lg text-neutral-300">
+      Atlasmc is in early rebrand and pre-built binaries are not yet published.
+      You can build from source today, or watch the GitHub repo for the first release.
+    </p>
+  </section>
+
+  <section class="max-w-4xl mx-auto px-6 pb-16 space-y-8">
+    <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6">
+      <h2 class="text-xl font-semibold mb-3">Pre-built binaries</h2>
+      <p class="text-neutral-300 mb-4">
+        Coming soon on the <a href="https://github.com/kodekaze1/atlasmc/releases" target="_blank" rel="noopener" class="text-[var(--color-accent-bright)] underline">GitHub Releases page</a>.
+        Targets: Windows (x64), macOS (universal), and Linux (x64).
+      </p>
+      <p class="text-sm text-neutral-400">
+        In the meantime, the upstream Arnis project publishes binaries at
+        <a href="https://github.com/louis-e/arnis/releases" target="_blank" rel="noopener" class="underline hover:text-[var(--color-accent-bright)]">github.com/louis-e/arnis/releases</a>
+        if you want to try the same generation engine before our rebrand ships.
+      </p>
+    </div>
+
+    <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6">
+      <h2 class="text-xl font-semibold mb-3">Build from source</h2>
+      <p class="text-neutral-300 mb-4">
+        Atlasmc is a Rust desktop app. You&rsquo;ll need <a href="https://rustup.rs" target="_blank" rel="noopener" class="underline hover:text-[var(--color-accent-bright)]">Rust stable</a> (1.95 or newer).
+        On Windows, you also need Visual Studio 2022 Build Tools with the &ldquo;Desktop development with C++&rdquo; workload.
+      </p>
+      <pre class="bg-black/40 border border-[var(--color-border)] rounded-md p-4 text-sm overflow-x-auto"><code>git clone https://github.com/kodekaze1/atlasmc.git
+cd atlasmc
+cargo run</code></pre>
+      <p class="text-sm text-neutral-400 mt-4">
+        For headless / CLI mode (no GUI), use <code class="text-neutral-200 bg-black/40 px-1 rounded">cargo run --no-default-features -- --terrain --path=&hellip; --bbox=&hellip;</code>.
+      </p>
+    </div>
+
+    <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6">
+      <h2 class="text-xl font-semibold mb-3">System requirements</h2>
+      <ul class="text-neutral-300 space-y-2 text-sm">
+        <li><strong class="text-neutral-100">OS:</strong> Windows 10 or newer, macOS 11+, or any modern Linux with WebKitGTK.</li>
+        <li><strong class="text-neutral-100">RAM:</strong> 4 GB minimum; 8 GB+ recommended for large bounding boxes.</li>
+        <li><strong class="text-neutral-100">Disk:</strong> ~200 MB for the app, plus space for your generated worlds and tile cache.</li>
+        <li><strong class="text-neutral-100">Internet:</strong> Required during generation to fetch OpenStreetMap and elevation tiles.</li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

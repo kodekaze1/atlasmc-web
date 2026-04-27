@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const faqs = [
+  {
+    q: 'How is Atlasmc different from Arnis?',
+    a: 'Atlasmc is a rebranded fork of Arnis. Functionally identical generator, separate name, separate distribution channel, separate funding. We removed upstream\'s telemetry endpoint, dropped the private Overpass mirror, and stripped the &ldquo;Arnis&rdquo; identifier from User-Agent strings sent to map and elevation providers. Generated world folders are named &ldquo;Atlasmc World N&rdquo; instead of &ldquo;Arnis World N&rdquo;. Otherwise the engine is the same.',
+  },
+  {
+    q: 'Does Atlasmc support Minecraft Bedrock?',
+    a: 'Yes. Choose Bedrock from the format toggle in the GUI; the app produces a .mcworld file on your Desktop that you can import into Minecraft Bedrock on Windows, iOS, Android, or Minecraft Education.',
+  },
+  {
+    q: 'How big an area can I generate?',
+    a: 'Practically, a few square kilometers at 1× scale on a typical laptop. Very large areas may run out of memory or hit Overpass API limits. The world-scale slider lets you fit larger real-world areas into smaller Minecraft regions.',
+  },
+  {
+    q: 'Why is the app fetching data from the internet?',
+    a: 'Generation pulls live data from OpenStreetMap (via the public Overpass API) and elevation providers (AWS Terrain Tiles, USGS, IGN, GSI). No data is sent the other way — Atlasmc has no telemetry endpoint and ships with the consent flag off.',
+  },
+  {
+    q: 'Is this a Minecraft mod or plugin?',
+    a: 'Neither. Atlasmc is a standalone desktop app (Rust + Tauri). It writes a complete Minecraft world directory or a .mcworld file directly to your filesystem, which you then open in vanilla Minecraft.',
+  },
+  {
+    q: 'Is there a token? An NFT? A coin?',
+    a: 'Atlasmc itself is free and open source under Apache 2.0. The maintainer may launch a separate token/coin alongside the project; if so, it will be clearly labelled and entirely optional &mdash; the desktop app will never gate features behind a token, payment, or wallet connection.',
+  },
+  {
+    q: 'Can I sell worlds I generated with Atlasmc?',
+    a: 'Atlasmc itself is Apache 2.0, so the code is fine. The OpenStreetMap data is licensed under ODbL, which has attribution and share-alike provisions for derivative databases &mdash; but generated Minecraft worlds aren\'t databases, so this is generally fine. Elevation provider terms vary; check the license screen in the app for per-provider details. None of this is legal advice.',
+  },
+];
+---
+<BaseLayout title="FAQ — Atlasmc">
+  <section class="max-w-3xl mx-auto px-6 pt-16 pb-10">
+    <h1 class="text-4xl font-bold tracking-tight">FAQ</h1>
+  </section>
+  <section class="max-w-3xl mx-auto px-6 pb-16 space-y-6">
+    {faqs.map(({ q, a }) => (
+      <details class="group rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-5 open:bg-[var(--color-bg-elevated)]">
+        <summary class="cursor-pointer font-medium text-neutral-100 list-none flex items-center justify-between gap-4">
+          <span>{q}</span>
+          <span class="text-[var(--color-accent-bright)] text-sm group-open:rotate-90 transition-transform">&rsaquo;</span>
+        </summary>
+        <p class="mt-3 text-sm text-neutral-300 leading-relaxed" set:html={a}></p>
+      </details>
+    ))}
+  </section>
+</BaseLayout>

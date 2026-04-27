@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="About — Atlasmc">
+  <article class="max-w-3xl mx-auto px-6 pt-16 pb-20 prose prose-invert">
+    <h1 class="text-4xl font-bold tracking-tight mb-6">About Atlasmc</h1>
+
+    <p class="text-lg text-neutral-300 leading-relaxed">
+      Atlasmc is an open-source desktop application that generates Minecraft worlds from
+      real-world geographic data. It&rsquo;s a fork of
+      <a href="https://github.com/louis-e/arnis" target="_blank" rel="noopener" class="text-[var(--color-accent-bright)] underline">Arnis</a>
+      by <a href="https://github.com/louis-e" target="_blank" rel="noopener" class="text-[var(--color-accent-bright)] underline">Louis Erbkamm</a>
+      and its contributors, licensed under Apache 2.0.
+    </p>
+
+    <h2 class="text-2xl font-semibold tracking-tight mt-12 mb-3">Why a fork</h2>
+    <p class="text-neutral-300 leading-relaxed">
+      Apache 2.0 grants the right to fork, modify, and redistribute the code. We rebranded
+      to a separate name (&ldquo;Atlasmc&rdquo;), a separate logo, and separate funding so the two
+      projects can evolve independently without confusing users. Trademark law treats names
+      and logos differently from copyrighted code &mdash; the rename keeps this fork on solid
+      ground without affecting our right to use, modify, and redistribute the underlying
+      Arnis source.
+    </p>
+
+    <h2 class="text-2xl font-semibold tracking-tight mt-12 mb-3">What changed in the fork</h2>
+    <ul class="list-disc pl-5 marker:text-[var(--color-accent)] space-y-2 text-neutral-300">
+      <li>Renamed the project, the binary, the Tauri bundle identifier, the Linux desktop entry, and every user-facing display string from &ldquo;Arnis&rdquo; to &ldquo;Atlasmc&rdquo;.</li>
+      <li>Removed upstream&rsquo;s telemetry endpoint so this fork cannot transmit any data to upstream infrastructure. Telemetry remains opt-in and defaults to disabled.</li>
+      <li>Removed upstream&rsquo;s update-check endpoint so this fork doesn&rsquo;t poll louis-e&rsquo;s repository for releases.</li>
+      <li>Removed the private Overpass mirror at api.arnismc.com so this fork doesn&rsquo;t consume upstream&rsquo;s bandwidth.</li>
+      <li>Stripped the &ldquo;Arnis/&rdquo; identifier from User-Agent strings sent to AWS Terrain Tiles, IGN France, IGN España, GSI Japan, and Overture Maps.</li>
+      <li>Renamed generated world folders to &ldquo;Atlasmc World N&rdquo; / &ldquo;Atlasmc {`{area}`}.mcworld&rdquo;.</li>
+      <li>Cleared upstream&rsquo;s GitHub Sponsor button (which routed to louis-e&rsquo;s Buy Me a Coffee) and removed in-app links to upstream&rsquo;s Discord and BMC.</li>
+    </ul>
+    <p class="text-neutral-400 text-sm mt-3">
+      The full machine-readable list of fork modifications lives in the
+      <a href="https://github.com/kodekaze1/atlasmc/blob/main/NOTICE" target="_blank" rel="noopener" class="underline">NOTICE</a> file at the repo root.
+    </p>
+
+    <h2 class="text-2xl font-semibold tracking-tight mt-12 mb-3">Trademark and attribution</h2>
+    <p class="text-neutral-300 leading-relaxed">
+      Apache 2.0 does <em>not</em> grant any rights to use the trade names, trademarks, service
+      marks, or product names of the original licensor. This fork uses its own name and does
+      not use the &ldquo;Arnis&rdquo; name or logo for branding. References to &ldquo;Arnis&rdquo; in our
+      documentation are for the limited purpose of attribution to upstream &mdash; that is
+      explicitly permitted by Apache 2.0 §6.
+    </p>
+
+    <h2 class="text-2xl font-semibold tracking-tight mt-12 mb-3">Press for upstream Arnis</h2>
+    <p class="text-neutral-300 leading-relaxed mb-3">
+      The original Arnis project has been recognized in academic and press publications. The
+      coverage refers to upstream specifically, but it is part of the project&rsquo;s lineage and
+      reflects what this codebase has been used for:
+    </p>
+    <ul class="list-disc pl-5 marker:text-[var(--color-accent)] space-y-2 text-neutral-300 text-sm">
+      <li><a href="https://aws.amazon.com/de/blogs/publicsector/building-realistic-minecraft-worlds-with-open-data-on-aws-how-arnis-uses-elevation-datasets-at-scale/" target="_blank" rel="noopener" class="underline hover:text-[var(--color-accent-bright)]">Building realistic Minecraft worlds with Open Data on AWS</a></li>
+      <li><a href="https://www.researchgate.net/publication/384644535_Floodcraft_Game-based_Interactive_Learning_Environment_using_Minecraft_for_Flood_Mitigation_and_Preparedness_for_K-12_Education" target="_blank" rel="noopener" class="underline hover:text-[var(--color-accent-bright)]">Floodcraft: Game-based Interactive Learning Environment using Minecraft for Flood Mitigation and Preparedness for K-12 Education</a></li>
+      <li><a href="https://hackaday.com/2024/12/30/bringing-openstreetmap-data-into-minecraft/" target="_blank" rel="noopener" class="underline hover:text-[var(--color-accent-bright)]">Hackaday: Bringing OpenStreetMap Data into Minecraft</a></li>
+      <li><a href="https://www.tomshardware.com/video-games/pc-gaming/minecraft-tool-lets-you-create-scale-replicas-of-real-world-locations-arnis-uses-geospatial-data-from-openstreetmap-to-generate-minecraft-maps" target="_blank" rel="noopener" class="underline hover:text-[var(--color-accent-bright)]">TomsHardware</a></li>
+      <li><a href="https://www.xda-developers.com/hometown-minecraft-map-arnis/" target="_blank" rel="noopener" class="underline hover:text-[var(--color-accent-bright)]">XDA Developers</a></li>
+    </ul>
+  </article>
+</BaseLayout>

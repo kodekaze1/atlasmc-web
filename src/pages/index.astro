@@ -1,17 +1,92 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
 
+const features = [
+  {
+    title: 'Java + Bedrock',
+    body: 'Generate worlds for Minecraft Java Edition (1.17+) and Bedrock Edition. Bedrock output is a .mcworld file you can import on Windows, iOS, Android, or Minecraft Education.',
+  },
+  {
+    title: 'Real-world geography',
+    body: 'OpenStreetMap data drives buildings, roads, landuse, water, railways, and more. ESA WorldCover satellite data fills in realistic ground textures.',
+  },
+  {
+    title: 'Multi-source elevation',
+    body: 'AWS Terrain Tiles for global coverage, supplemented by USGS 3DEP (United States), IGN France, IGN España, and GSI Japan for high-resolution regional elevation.',
+  },
+  {
+    title: 'Deterministic',
+    body: 'Identical inputs produce identical worlds. Reproducible generation for sharing, education, and research.',
+  },
+  {
+    title: '18 languages',
+    body: 'GUI translated into English, German, Spanish, French, Polish, Russian, Chinese, Japanese, Korean, Portuguese, Arabic, and more.',
+  },
+  {
+    title: 'Open source',
+    body: 'Apache 2.0. Fork it, modify it, redistribute it. The full source for the desktop app is on GitHub.',
+  },
+];
 ---
+<BaseLayout>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 hero-grid pointer-events-none" aria-hidden="true"></div>
+    <div class="relative max-w-6xl mx-auto px-6 pt-20 pb-24 text-center">
+      <span class="inline-block text-xs font-medium tracking-widest uppercase text-[var(--color-accent-bright)] mb-4">
+        Real-world locations · in Minecraft
+      </span>
+      <h1 class="text-5xl md:text-6xl font-bold tracking-tight max-w-3xl mx-auto leading-[1.05]">
+        Generate your hometown <span class="text-[var(--color-accent-bright)]">in Minecraft.</span>
+      </h1>
+      <p class="mt-6 text-lg text-neutral-300 max-w-2xl mx-auto">
+        Atlasmc turns OpenStreetMap data and global elevation tiles into playable Minecraft worlds.
+        Pick a bounding box, click <em>Generate</em>, walk through your city.
+      </p>
+      <div class="mt-10 flex items-center justify-center gap-3 flex-wrap">
+        <a
+          href="/download"
+          class="inline-flex items-center px-6 py-3 rounded-md bg-[var(--color-accent)] text-neutral-950 font-medium hover:bg-[var(--color-accent-bright)] transition"
+        >
+          Download
+        </a>
+        <a
+          href="https://github.com/kodekaze1/atlasmc"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center px-6 py-3 rounded-md border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent-bright)] transition"
+        >
+          View on GitHub
+        </a>
+      </div>
+    </div>
+  </section>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+  <!-- Features grid -->
+  <section class="max-w-6xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-semibold tracking-tight mb-2">What it does</h2>
+    <p class="text-neutral-400 mb-10">A full Rust desktop app — no servers, no accounts, no telemetry by default.</p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {features.map(({ title, body }) => (
+        <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6">
+          <h3 class="font-semibold text-[var(--color-accent-bright)] mb-2">{title}</h3>
+          <p class="text-sm text-neutral-300 leading-relaxed">{body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Attribution / fork -->
+  <section class="max-w-6xl mx-auto px-6 py-12">
+    <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-8">
+      <h2 class="text-2xl font-semibold tracking-tight mb-3">Built on Arnis</h2>
+      <p class="text-neutral-300 leading-relaxed">
+        Atlasmc is a fork of <a href="https://github.com/louis-e/arnis" target="_blank" rel="noopener" class="text-[var(--color-accent-bright)] underline">Arnis</a>
+        by Louis Erbkamm and its 53+ contributors, licensed under Apache 2.0.
+        We keep louis-e&rsquo;s copyright notice and credit upstream prominently in our
+        <a href="https://github.com/kodekaze1/atlasmc/blob/main/NOTICE" target="_blank" rel="noopener" class="text-[var(--color-accent-bright)] underline">NOTICE</a> file.
+        See <a href="/about" class="text-[var(--color-accent-bright)] underline">about</a> for the rationale and a summary of fork-specific changes.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const sections = [
+  {
+    heading: 'Map data',
+    items: [
+      'OpenStreetMap (Overpass API) for buildings, roads, railways, landuse, water, natural features, amenities, barriers, power lines, and more.',
+      'Overture Maps integration for richer building footprints in supported regions.',
+      'ESA WorldCover satellite land-cover for realistic ground textures (forest, grassland, water, urban, etc.).',
+    ],
+  },
+  {
+    heading: 'Elevation',
+    items: [
+      'AWS Terrain Tiles as a global fallback (open data, public domain layers).',
+      'USGS 3DEP for high-resolution coverage in the United States.',
+      'IGN France RGE ALTI for high-resolution coverage in France.',
+      'IGN España MDT for high-resolution coverage in Spain.',
+      'GSI Japan elevation tiles for high-resolution coverage in Japan.',
+      'Provider fallback chain with smoothing and outlier filtering for clean terrain.',
+    ],
+  },
+  {
+    heading: 'Output formats',
+    items: [
+      'Minecraft Java Edition 1.17+ region files written directly into your saves folder.',
+      'Minecraft Bedrock Edition .mcworld files exported to your Desktop, importable on Windows, iOS, Android, and Minecraft Education.',
+      'Optional bundled datapack (Java) and behavior pack (Bedrock) for extended build height beyond vanilla limits.',
+    ],
+  },
+  {
+    heading: 'Generation controls',
+    items: [
+      'Interactive map picker with rectangle, geocoding search, and saved locations.',
+      'World scale slider (1× to fit large areas inside Minecraft, &gt;1× for detail).',
+      'Spawn point picker, rotation angle, ground level override.',
+      'Terrain-only mode (skip buildings/roads), interior generation toggle, roof generation toggle.',
+      'Floodfill timeout for very large areas; deterministic RNG for reproducible runs.',
+    ],
+  },
+  {
+    heading: 'Built objects',
+    items: [
+      'Buildings with roof types (gabled, hipped, mansard, dome, onion, cone, …), balconies, shutters, chimneys, gables, quoins.',
+      'Highways with lane markings, tunnels, elevated layers, and subway tunnels.',
+      'Railways, bridges, water bodies, wetlands, parks, farmland, quarries, landfill, industrial zones, coastal areas.',
+      'Barriers and fences, power lines, traffic lights, benches, fire hydrants, recycling bins, info boards.',
+      'Trees with tag-based variation, rollercoasters, pyramids, urban ground.',
+    ],
+  },
+  {
+    heading: 'Privacy and openness',
+    items: [
+      'Apache 2.0 — fork it, modify it, redistribute it.',
+      'No telemetry by default. The Atlasmc fork removed upstream\'s telemetry endpoint entirely; the consent flag remains opt-in.',
+      'No accounts, no servers, no DRM. The app talks directly to public OSM and elevation tile providers.',
+    ],
+  },
+];
+---
+<BaseLayout title="Features — Atlasmc">
+  <section class="max-w-4xl mx-auto px-6 pt-16 pb-10">
+    <h1 class="text-4xl font-bold tracking-tight">Features</h1>
+    <p class="mt-4 text-lg text-neutral-300">
+      Everything Atlasmc inherits from upstream Arnis, plus the fork-specific changes.
+    </p>
+  </section>
+
+  <section class="max-w-4xl mx-auto px-6 pb-16 space-y-10">
+    {sections.map(({ heading, items }) => (
+      <div>
+        <h2 class="text-xl font-semibold tracking-tight mb-4">{heading}</h2>
+        <ul class="space-y-2 list-disc pl-5 marker:text-[var(--color-accent)]">
+          {items.map(item => (
+            <li class="text-neutral-300 text-sm leading-relaxed" set:html={item} />
+          ))}
+        </ul>
+      </div>
+    ))}
+  </section>
+</BaseLayout>
