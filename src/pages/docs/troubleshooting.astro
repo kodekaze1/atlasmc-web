@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const issues = [
+  {
+    q: 'Generation is very slow / hangs',
+    a: 'The Overpass API rate-limits anonymous requests. Atlasmc tries multiple mirrors with shuffled fallback, but during peak load you can still get queued. Try a smaller bbox first to confirm everything works, then retry the larger area later. Very large areas (>10 km²) can take 30+ minutes legitimately.',
+  },
+  {
+    q: 'Buildings are missing or wrong shape',
+    a: 'Coverage depends entirely on OpenStreetMap data quality for the area. Major cities (especially in Europe) have detailed building footprints; rural areas often only have road networks. You can improve coverage by editing OSM directly &mdash; your contributions show up in Atlasmc on the next generation.',
+  },
+  {
+    q: '"World is locked" error',
+    a: "Minecraft is still holding the world directory open, even if it looks closed. Quit Minecraft fully (Task Manager / Activity Monitor — make sure no java/javaw process is running), then retry. On Linux, also check `/tmp/minecraft.lock` if it exists.",
+  },
+  {
+    q: 'Bedrock .mcworld won\'t import',
+    a: 'Make sure you opened the .mcworld file with the Minecraft Bedrock app (not extracted as a zip). On Windows, double-clicking the file should associate it correctly. On iOS/Android, share the file to Minecraft via the system share sheet. On Education Edition, use the Import Worlds option in the main menu.',
+  },
+  {
+    q: 'SmartScreen / Gatekeeper blocks the binary',
+    a: 'Atlasmc binaries are unsigned (real code-signing certificates cost ~$200/year and we\'re holding off until launch). On Windows: SmartScreen → "More info" → "Run anyway". On macOS: Right-click → Open, then confirm the security prompt. Linux has no equivalent gate. Building from source avoids the warning.',
+  },
+  {
+    q: 'Terrain looks flat / no elevation',
+    a: 'Make sure --terrain is enabled (CLI) or "Generation mode" is "Objects + Terrain" (GUI). If terrain is enabled and still flat, check that you have an internet connection during generation — elevation data fetches live from AWS Terrain Tiles + regional providers. Some very small bboxes cover only a single elevation tile pixel and look approximately flat.',
+  },
+  {
+    q: 'I see "Failed to fetch from Overpass" errors',
+    a: 'All Overpass mirrors were unreachable from your network. Could be a transient outage, your firewall, or a captive portal. Wait a few minutes and retry. If consistent, check whether you can reach https://overpass-api.de/api/interpreter from a browser; if not, your network blocks it.',
+  },
+  {
+    q: 'Generated world is much smaller than I expected',
+    a: 'Atlasmc maps real-world meters to Minecraft blocks at world-scale 1.0. So a 1 km × 1 km bbox produces a ~1000 × 1000 block area. Buildings and features within that are sized accurately. If you want a larger Minecraft area for the same real-world bbox, lower the scale (0.5 doubles the size).',
+  },
+  {
+    q: 'Logs / how do I report a bug',
+    a: "Logs live at %LOCALAPPDATA%\\com.atlasmc.app\\logs (Windows), ~/Library/Logs/com.atlasmc.app (macOS), or ~/.local/share/com.atlasmc.app/logs (Linux). Attach the log to a GitHub issue at github.com/kodekaze1/atlasmc/issues along with the bbox, OS, and version.",
+  },
+];
+---
+<BaseLayout title="Troubleshooting — Atlasmc Docs">
+  <article class="max-w-3xl mx-auto px-6 pt-16 pb-20">
+    <p class="text-xs uppercase tracking-widest text-neutral-500"><a href="/docs" class="hover:text-[var(--color-accent-bright)]">Docs</a> / Troubleshooting</p>
+    <h1 class="text-4xl font-bold tracking-tight mt-3 mb-6">Troubleshooting</h1>
+    <p class="text-lg text-neutral-300 mb-10">
+      Common issues and what to do about them.
+    </p>
+
+    <div class="space-y-3">
+      {issues.map(({ q, a }) => (
+        <details class="group rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-5">
+          <summary class="cursor-pointer font-medium text-neutral-100 list-none flex items-center justify-between gap-4">
+            <span>{q}</span>
+            <span class="text-[var(--color-accent-bright)] text-sm group-open:rotate-90 transition-transform">&rsaquo;</span>
+          </summary>
+          <p class="mt-3 text-sm text-neutral-300 leading-relaxed" set:html={a}></p>
+        </details>
+      ))}
+    </div>
+
+    <p class="text-sm text-neutral-500 mt-12">
+      Not on this list? Open an issue at
+      <a href="https://github.com/kodekaze1/atlasmc/issues" target="_blank" rel="noopener" class="underline hover:text-[var(--color-accent-bright)]">github.com/kodekaze1/atlasmc/issues</a>
+      with the log file and a minimal reproduction.
+    </p>
+  </article>
+</BaseLayout>

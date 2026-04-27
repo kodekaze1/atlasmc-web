@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="CLI reference — Atlasmc Docs">
+  <article class="max-w-3xl mx-auto px-6 pt-16 pb-20 prose prose-invert">
+    <p class="text-xs uppercase tracking-widest text-neutral-500"><a href="/docs" class="hover:text-[var(--color-accent-bright)]">Docs</a> / CLI reference</p>
+    <h1 class="text-4xl font-bold tracking-tight mt-3 mb-6">CLI reference</h1>
+
+    <p class="text-neutral-300 text-lg">
+      Atlasmc has a headless mode that&rsquo;s useful for scripting, CI
+      pipelines, and batch generation. The same binary handles both GUI
+      and CLI modes &mdash; the CLI flags work whether you launch with
+      or without the GUI feature compiled in.
+    </p>
+
+    <h2 class="text-2xl font-semibold mt-12 mb-3">Running without the GUI</h2>
+    <p class="text-neutral-300">
+      For pure-CLI use cases, build without the GUI feature for a smaller
+      binary (~10 MB instead of ~62 MB) and no Tauri runtime overhead:
+    </p>
+    <pre class="bg-black/40 border border-[var(--color-border)] rounded-md p-4 text-sm overflow-x-auto"><code>cargo build --release --no-default-features
+./target/release/atlasmc --terrain --path ./out --bbox "47.6062,-122.3321,47.6262,-122.3121"</code></pre>
+
+    <h2 class="text-2xl font-semibold mt-12 mb-3">Flags</h2>
+
+    <h3 class="text-lg font-semibold mt-6 mb-2 text-[var(--color-accent-bright)]"><code>--bbox &lt;LAT_MIN,LNG_MIN,LAT_MAX,LNG_MAX&gt;</code></h3>
+    <p class="text-neutral-300">
+      Required. The bounding box to generate, as four comma-separated
+      decimals: minimum latitude, minimum longitude, maximum latitude,
+      maximum longitude. Latitude before longitude.
+    </p>
+
+    <h3 class="text-lg font-semibold mt-6 mb-2 text-[var(--color-accent-bright)]"><code>--path &lt;DIR&gt;</code></h3>
+    <p class="text-neutral-300">
+      Path to write the generated world into. For Java, this should be a
+      directory under your <code class="bg-black/40 px-1 rounded text-neutral-200">.minecraft/saves/</code>
+      folder. For Bedrock, the <code class="bg-black/40 px-1 rounded text-neutral-200">.mcworld</code> file
+      is written next to this path.
+    </p>
+
+    <h3 class="text-lg font-semibold mt-6 mb-2 text-[var(--color-accent-bright)]"><code>--terrain</code></h3>
+    <p class="text-neutral-300">
+      Generate terrain (elevation, ground textures). Without this flag,
+      generation produces a flat world with just OSM-derived structures.
+    </p>
+
+    <h3 class="text-lg font-semibold mt-6 mb-2 text-[var(--color-accent-bright)]"><code>--scale &lt;FLOAT&gt;</code></h3>
+    <p class="text-neutral-300">
+      World scale. <code class="bg-black/40 px-1 rounded text-neutral-200">1.0</code> = real-world dimensions.
+      Higher values shrink the area to fit more into a smaller Minecraft
+      region; lower values expand. Default 1.0.
+    </p>
+
+    <h3 class="text-lg font-semibold mt-6 mb-2 text-[var(--color-accent-bright)]"><code>--rotation &lt;DEGREES&gt;</code></h3>
+    <p class="text-neutral-300">
+      Rotate the bounding box around its center by N degrees. Useful when
+      a city&rsquo;s grid aligns badly with Minecraft chunk boundaries.
+    </p>
+
+    <h3 class="text-lg font-semibold mt-6 mb-2 text-[var(--color-accent-bright)]"><code>--benchmark</code></h3>
+    <p class="text-neutral-300">
+      Print timing breakdowns for each phase of generation. Useful for
+      profiling and CI runs.
+    </p>
+
+    <p class="text-sm text-neutral-500 mt-8">
+      Run <code class="bg-black/40 px-1 rounded text-neutral-200">atlasmc --help</code>
+      for the full flag list including any added since this page was last
+      updated. The canonical source is
+      <a href="https://github.com/kodekaze1/atlasmc/blob/main/src/args.rs" target="_blank" rel="noopener" class="underline hover:text-[var(--color-accent-bright)]">src/args.rs</a>.
+    </p>
+
+    <h2 class="text-2xl font-semibold mt-12 mb-3">Examples</h2>
+
+    <h3 class="text-lg font-semibold mt-6 mb-2">Manhattan, Java, default settings</h3>
+    <pre class="bg-black/40 border border-[var(--color-border)] rounded-md p-4 text-sm overflow-x-auto"><code>atlasmc \
+  --bbox "40.7000,-74.0200,40.7500,-73.9700" \
+  --path "$HOME/.minecraft/saves/manhattan" \
+  --terrain</code></pre>
+
+    <h3 class="text-lg font-semibold mt-6 mb-2">Tokyo center, 2× scale (squeeze a 5km area into 2.5km)</h3>
+    <pre class="bg-black/40 border border-[var(--color-border)] rounded-md p-4 text-sm overflow-x-auto"><code>atlasmc \
+  --bbox "35.6700,139.7400,35.7150,139.7850" \
+  --path "$HOME/.minecraft/saves/tokyo" \
+  --terrain --scale 2.0</code></pre>
+
+    <h3 class="text-lg font-semibold mt-6 mb-2">Rural area, terrain only, no buildings</h3>
+    <pre class="bg-black/40 border border-[var(--color-border)] rounded-md p-4 text-sm overflow-x-auto"><code>atlasmc \
+  --bbox "46.5000,7.5000,46.5500,7.5500" \
+  --path "$HOME/.minecraft/saves/swiss-alps" \
+  --terrain</code></pre>
+  </article>
+</BaseLayout>

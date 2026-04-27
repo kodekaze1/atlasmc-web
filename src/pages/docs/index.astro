@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const sections = [
+  {
+    title: 'Getting started',
+    href: '/docs/getting-started',
+    body: 'Install Atlasmc, pick an area, and generate your first Minecraft world.',
+  },
+  {
+    title: 'CLI reference',
+    href: '/docs/cli',
+    body: 'Run Atlasmc headlessly from the command line. Useful for scripting, batch generation, and CI.',
+  },
+  {
+    title: 'Troubleshooting',
+    href: '/docs/troubleshooting',
+    body: 'Slow generation, missing buildings, "world locked", Bedrock import problems, and other common issues.',
+  },
+];
+---
+<BaseLayout title="Docs — Atlasmc" description="Documentation for Atlasmc, the open-source Minecraft world generator.">
+  <section class="max-w-3xl mx-auto px-6 pt-16 pb-10">
+    <h1 class="text-4xl font-bold tracking-tight">Documentation</h1>
+    <p class="mt-4 text-lg text-neutral-300">
+      Practical guides for using Atlasmc. The codebase itself is the source of
+      truth &mdash; these pages summarize the parts that matter most to users.
+    </p>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-6 pb-16 space-y-4">
+    {sections.map(({ title, href, body }) => (
+      <a
+        href={href}
+        class="block group rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6 hover:border-[var(--color-accent)] transition"
+      >
+        <h2 class="text-xl font-semibold group-hover:text-[var(--color-accent-bright)] transition">{title}</h2>
+        <p class="text-sm text-neutral-300 mt-2 leading-relaxed">{body}</p>
+      </a>
+    ))}
+    <p class="text-sm text-neutral-500 pt-2">
+      For implementation-level details, the
+      <a href="https://github.com/kodekaze1/atlasmc" target="_blank" rel="noopener" class="underline hover:text-[var(--color-accent-bright)]">source code</a>
+      and
+      <a href="https://github.com/kodekaze1/atlasmc/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener" class="underline hover:text-[var(--color-accent-bright)]">CONTRIBUTING.md</a>
+      cover module structure, build setup, and how the generation pipeline is wired together.
+    </p>
+  </section>
+</BaseLayout>

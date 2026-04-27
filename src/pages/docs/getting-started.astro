@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Getting started — Atlasmc Docs">
+  <article class="max-w-3xl mx-auto px-6 pt-16 pb-20 prose prose-invert">
+    <p class="text-xs uppercase tracking-widest text-neutral-500"><a href="/docs" class="hover:text-[var(--color-accent-bright)]">Docs</a> / Getting started</p>
+    <h1 class="text-4xl font-bold tracking-tight mt-3 mb-6">Getting started</h1>
+
+    <h2 class="text-2xl font-semibold mt-8 mb-3">1. Install</h2>
+    <p class="text-neutral-300">
+      Pre-built binaries for Windows, macOS, and Linux are on the
+      <a href="/download" class="text-[var(--color-accent-bright)] underline">download page</a>.
+      Or build from source &mdash; see
+      <a href="https://github.com/kodekaze1/atlasmc/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener" class="text-[var(--color-accent-bright)] underline">CONTRIBUTING.md</a>.
+    </p>
+
+    <h2 class="text-2xl font-semibold mt-8 mb-3">2. Launch</h2>
+    <p class="text-neutral-300">
+      Double-click the executable. The first launch may show a Windows
+      SmartScreen warning (binaries are unsigned for now) &mdash; click
+      &ldquo;More info&rdquo; → &ldquo;Run anyway&rdquo;. macOS may require
+      Right-click → Open the first time.
+    </p>
+    <p class="text-neutral-300 mt-3">
+      The Atlasmc window opens with a map (Leaflet, OpenStreetMap tiles).
+      The dark theme is intentional.
+    </p>
+
+    <h2 class="text-2xl font-semibold mt-8 mb-3">3. Pick a target world</h2>
+    <p class="text-neutral-300">
+      Toggle <strong>Java</strong> or <strong>Bedrock</strong> at the top.
+      For Java, use the &ldquo;Create World&rdquo; button — Atlasmc creates
+      a fresh world directory inside <code class="bg-black/40 px-1 rounded text-neutral-200">.minecraft/saves/</code>.
+      For Bedrock, the output is a <code class="bg-black/40 px-1 rounded text-neutral-200">.mcworld</code>
+      file written to your Desktop, which you import into Minecraft Bedrock
+      manually (Windows / iOS / Android / Education).
+    </p>
+
+    <h2 class="text-2xl font-semibold mt-8 mb-3">4. Pick an area</h2>
+    <p class="text-neutral-300">
+      Use the rectangle tool on the map to draw a bounding box, or paste
+      coordinates as <code class="bg-black/40 px-1 rounded text-neutral-200">lat,lng,lat,lng</code> into the
+      &ldquo;Custom Bounding Box&rdquo; field. Smaller is faster — start
+      with a few city blocks (≤ 1 km²) before trying anything ambitious.
+    </p>
+
+    <h2 class="text-2xl font-semibold mt-8 mb-3">5. (Optional) Tweak settings</h2>
+    <ul class="list-disc pl-5 marker:text-[var(--color-accent)] space-y-2 text-neutral-300">
+      <li><strong>World scale:</strong> 1× preserves real-world distances. Larger values squeeze a bigger area into a smaller Minecraft region.</li>
+      <li><strong>Generation mode:</strong> Objects + Terrain (default), Objects only, or Terrain only.</li>
+      <li><strong>Interior generation:</strong> fills building interiors with floors / walls / doors. Adds time.</li>
+      <li><strong>Roof generation:</strong> tag-driven roof shapes (gabled, hipped, mansard, dome, etc.).</li>
+      <li><strong>Build height extension:</strong> bundles a datapack (Java) or behavior pack (Bedrock) so the world supports build heights beyond vanilla limits.</li>
+      <li><strong>Rotation angle:</strong> rotate the bbox in case your real-world area aligns badly with Minecraft chunks.</li>
+    </ul>
+
+    <h2 class="text-2xl font-semibold mt-8 mb-3">6. Generate</h2>
+    <p class="text-neutral-300">
+      Click <strong>Start Generation</strong>. Atlasmc fetches OSM data,
+      elevation tiles, and ESA WorldCover, then writes the world. Progress
+      shows in the right panel. Time depends on bbox size and your network
+      &mdash; small areas finish in seconds, large cities can take 30+ minutes.
+    </p>
+
+    <h2 class="text-2xl font-semibold mt-8 mb-3">7. Open in Minecraft</h2>
+    <p class="text-neutral-300">
+      For Java: launch Minecraft, your generated world appears in the
+      Singleplayer list. For Bedrock: open the <code class="bg-black/40 px-1 rounded text-neutral-200">.mcworld</code>
+      file from Desktop &mdash; it imports automatically. Spawn point is
+      wherever you set it (default: center of bbox).
+    </p>
+
+    <hr class="my-12 border-[var(--color-border)]" />
+
+    <h3 class="text-xl font-semibold mb-3">Next steps</h3>
+    <ul class="list-disc pl-5 marker:text-[var(--color-accent)] space-y-2 text-neutral-300">
+      <li><a href="/docs/cli" class="text-[var(--color-accent-bright)] underline">CLI reference</a> &mdash; run from the command line.</li>
+      <li><a href="/docs/troubleshooting" class="text-[var(--color-accent-bright)] underline">Troubleshooting</a> &mdash; common issues and fixes.</li>
+      <li><a href="/features" class="text-[var(--color-accent-bright)] underline">Features</a> &mdash; full list of map data, elevation providers, and generated objects.</li>
+    </ul>
+  </article>
+</BaseLayout>
