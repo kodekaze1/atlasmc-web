@@ -7,10 +7,10 @@ const navItems = [
 ];
 const path = Astro.url.pathname;
 ---
-<header class="border-b border-[var(--color-border)] bg-[var(--color-bg)]/80 backdrop-blur sticky top-0 z-10">
+<header class="border-b border-[var(--color-border)]/60 bg-black/40 backdrop-blur sticky top-0 z-20">
   <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-    <a href="/" class="font-semibold text-lg tracking-tight hover:text-[var(--color-accent-bright)] transition">
-      Atlasmc
+    <a href="/" class="logo-pixel text-2xl text-white hover:text-[var(--color-accent-bright)] transition">
+      ATLASMC
     </a>
     <nav class="flex items-center gap-6">
       {navItems.map(({ href, label }) => (

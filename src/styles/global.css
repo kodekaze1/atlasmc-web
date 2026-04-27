@@ -7,6 +7,7 @@
   --color-bg-elevated: oklch(0.21 0.008 240);
   --color-border: oklch(0.32 0.01 240);
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-pixel: 'Pixelify Sans', ui-monospace, monospace;
 }
 
 html {
@@ -19,11 +20,51 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Subtle grid background for the hero. */
+/* Subtle grid background for the hero (used as a fallback when no slideshow images are present). */
 .hero-grid {
   background-image:
     linear-gradient(to right, color-mix(in oklch, var(--color-border) 30%, transparent) 1px, transparent 1px),
     linear-gradient(to bottom, color-mix(in oklch, var(--color-border) 30%, transparent) 1px, transparent 1px);
   background-size: 32px 32px;
   mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+}
+
+/* Minecraft-style pixel logo with extruded bevel. */
+.logo-pixel {
+  font-family: var(--font-pixel);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-shadow:
+    0 1px 0 #1a1a1a,
+    0 2px 0 #161616,
+    0 3px 0 #121212,
+    0 4px 0 #0e0e0e,
+    0 5px 6px rgba(0, 0, 0, 0.55);
+}
+
+/* Hero slideshow: fade between stacked images on a 21s loop with 7s stagger.
+   Add or remove .hero-slide elements; the keyframe stays the same — just
+   adjust each slide's animation-delay inline (i * 7s). */
+.hero-slide {
+  opacity: 0;
+  animation: hero-fade 21s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+@keyframes hero-fade {
+  0%   { opacity: 0; transform: scale(1.05); }
+  5%   { opacity: 1; }
+  33%  { opacity: 1; transform: scale(1.10); }
+  38%  { opacity: 0; }
+  100% { opacity: 0; transform: scale(1.05); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide {
+    animation: none;
+    opacity: 1;
+  }
+  .hero-slide:not(:first-child) {
+    display: none;
+  }
 }
