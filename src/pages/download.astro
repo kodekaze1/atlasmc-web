@@ -1,29 +1,62 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Latest release. Update on each new tag — eventually we'll fetch this
+// at build time from the GitHub Releases API.
+const latest = {
+  version: 'v2.7.1',
+  url: 'https://github.com/kodekaze1/atlasmc/releases/tag/v2.7.1',
+  assets: [
+    {
+      label: 'Windows (x64)',
+      file: 'atlasmc-windows.exe',
+      href: 'https://github.com/kodekaze1/atlasmc/releases/download/v2.7.1/atlasmc-windows.exe',
+      hint: 'Unsigned — Windows SmartScreen may show a warning the first time you run it. "More info" → "Run anyway".',
+    },
+    {
+      label: 'macOS (universal)',
+      file: 'atlasmc-mac-universal.tar.gz',
+      href: 'https://github.com/kodekaze1/atlasmc/releases/download/v2.7.1/atlasmc-mac-universal.tar.gz',
+      hint: 'Universal binary for both Intel and Apple Silicon. Unsigned — Gatekeeper may require Right-click → Open the first time.',
+    },
+    {
+      label: 'Linux (x64)',
+      file: 'atlasmc-linux.tar.gz',
+      href: 'https://github.com/kodekaze1/atlasmc/releases/download/v2.7.1/atlasmc-linux.tar.gz',
+      hint: 'Requires GTK 3 + WebKitGTK 4.1 + libsoup 3 (most modern desktop distros have these).',
+    },
+  ],
+};
 ---
 <BaseLayout title="Download — Atlasmc" description="Download Atlasmc for Windows, macOS, and Linux. Free, open source, Apache 2.0.">
   <section class="max-w-4xl mx-auto px-6 pt-16 pb-10">
-    <h1 class="text-4xl font-bold tracking-tight">Download</h1>
+    <h1 class="text-4xl font-bold tracking-tight">Download Atlasmc</h1>
     <p class="mt-4 text-lg text-neutral-300">
-      Atlasmc is in early rebrand and pre-built binaries are not yet published.
-      You can build from source today, or watch the GitHub repo for the first release.
+      Latest release: <strong class="text-[var(--color-accent-bright)]">{latest.version}</strong>.
+      Free, open source, Apache 2.0.
+    </p>
+  </section>
+
+  <section class="max-w-4xl mx-auto px-6 pb-10 space-y-4">
+    {latest.assets.map(({ label, file, href, hint }) => (
+      <a
+        href={href}
+        class="block group rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6 hover:border-[var(--color-accent)] transition"
+      >
+        <div class="flex items-baseline justify-between gap-4 flex-wrap">
+          <h2 class="text-xl font-semibold group-hover:text-[var(--color-accent-bright)] transition">{label}</h2>
+          <code class="text-xs text-neutral-500">{file}</code>
+        </div>
+        <p class="text-sm text-neutral-400 mt-2">{hint}</p>
+      </a>
+    ))}
+    <p class="text-sm text-neutral-500 pt-2">
+      All assets, checksums, and release notes:
+      <a href={latest.url} target="_blank" rel="noopener" class="underline hover:text-[var(--color-accent-bright)]">{latest.url}</a>
     </p>
   </section>
 
   <section class="max-w-4xl mx-auto px-6 pb-16 space-y-8">
-    <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6">
-      <h2 class="text-xl font-semibold mb-3">Pre-built binaries</h2>
-      <p class="text-neutral-300 mb-4">
-        Coming soon on the <a href="https://github.com/kodekaze1/atlasmc/releases" target="_blank" rel="noopener" class="text-[var(--color-accent-bright)] underline">GitHub Releases page</a>.
-        Targets: Windows (x64), macOS (universal), and Linux (x64).
-      </p>
-      <p class="text-sm text-neutral-400">
-        In the meantime, the upstream Arnis project publishes binaries at
-        <a href="https://github.com/louis-e/arnis/releases" target="_blank" rel="noopener" class="underline hover:text-[var(--color-accent-bright)]">github.com/louis-e/arnis/releases</a>
-        if you want to try the same generation engine before our rebrand ships.
-      </p>
-    </div>
-
     <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6">
       <h2 class="text-xl font-semibold mb-3">Build from source</h2>
       <p class="text-neutral-300 mb-4">
@@ -35,13 +68,14 @@ cd atlasmc
 cargo run</code></pre>
       <p class="text-sm text-neutral-400 mt-4">
         For headless / CLI mode (no GUI), use <code class="text-neutral-200 bg-black/40 px-1 rounded">cargo run --no-default-features -- --terrain --path=&hellip; --bbox=&hellip;</code>.
+        Full setup notes are in <a href="https://github.com/kodekaze1/atlasmc/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener" class="underline hover:text-[var(--color-accent-bright)]">CONTRIBUTING.md</a>.
       </p>
     </div>
 
     <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6">
       <h2 class="text-xl font-semibold mb-3">System requirements</h2>
       <ul class="text-neutral-300 space-y-2 text-sm">
-        <li><strong class="text-neutral-100">OS:</strong> Windows 10 or newer, macOS 11+, or any modern Linux with WebKitGTK.</li>
+        <li><strong class="text-neutral-100">OS:</strong> Windows 10 or newer, macOS 11+, or any modern Linux with WebKitGTK 4.1.</li>
         <li><strong class="text-neutral-100">RAM:</strong> 4 GB minimum; 8 GB+ recommended for large bounding boxes.</li>
         <li><strong class="text-neutral-100">Disk:</strong> ~200 MB for the app, plus space for your generated worlds and tile cache.</li>
         <li><strong class="text-neutral-100">Internet:</strong> Required during generation to fetch OpenStreetMap and elevation tiles.</li>
