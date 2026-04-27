@@ -6,12 +6,22 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  /** Override the OG image for a specific page. Defaults to /og.png. */
+  ogImage?: string;
+  /** Hint to crawlers that this page is the canonical URL. */
+  noindex?: boolean;
 }
 
 const {
   title = 'Atlasmc — Real-world Minecraft worlds',
   description = 'Atlasmc generates Minecraft Java Edition and Bedrock Edition worlds from real-world OpenStreetMap data and global elevation tiles. Open source, fork of Arnis.',
+  ogImage = '/og.png',
+  noindex = false,
 } = Astro.props;
+
+// Build absolute URLs from Astro.site (set in astro.config.mjs).
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImageUrl = new URL(ogImage, Astro.site).href;
 ---
 <!doctype html>
 <html lang="en">
@@ -19,15 +29,34 @@ const {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet" />
+
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Open Graph (Facebook, LinkedIn, Discord, iMessage, etc.) -->
+    <meta property="og:site_name" content="Atlasmc" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Atlasmc — Generate real-world Minecraft worlds" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
   </head>
   <body class="min-h-screen bg-[var(--color-bg)] text-neutral-100 flex flex-col">
     <Header />
