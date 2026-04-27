@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// This page is intentionally NOT linked from the main nav until the
+// project is ready to publicly announce token plans. It's reachable at
+// /token for direct linking only.
+---
+<BaseLayout
+  title="Token — Atlasmc"
+  description="Atlasmc is exploring a community token to fund development. No sale yet, no contract deployed, no allocation guarantees."
+>
+  <section class="max-w-3xl mx-auto px-6 pt-16 pb-10">
+    <p class="inline-block text-xs font-medium tracking-widest uppercase text-[var(--color-accent-bright)] mb-4">
+      Status · Exploring
+    </p>
+    <h1 class="text-4xl font-bold tracking-tight">Atlasmc Token</h1>
+    <p class="mt-5 text-lg text-neutral-300 leading-relaxed">
+      We&rsquo;re exploring a community token as a way to fund continued
+      development of Atlasmc and the underlying open-source desktop app.
+      Nothing has been launched. No contract is deployed. There is no
+      sale, no presale, no allocation, and no investment opportunity at
+      this time.
+    </p>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-6 pb-16 space-y-8">
+    <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6">
+      <h2 class="text-xl font-semibold mb-3">What we&rsquo;re considering</h2>
+      <ul class="list-disc pl-5 marker:text-[var(--color-accent)] space-y-2 text-neutral-300 text-sm">
+        <li>A utility token tied to the Atlasmc project &mdash; not a security and not an investment.</li>
+        <li>Treasury funding for development, infrastructure (hosted generator, tile caches), and community grants.</li>
+        <li>Lightweight on-chain governance for non-critical project decisions.</li>
+        <li>Transparent vesting and unlock schedule, published before any sale.</li>
+        <li>Independent smart-contract audit before any deployment.</li>
+      </ul>
+    </div>
+
+    <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6">
+      <h2 class="text-xl font-semibold mb-3">What it is not</h2>
+      <ul class="list-disc pl-5 marker:text-[var(--color-accent)] space-y-2 text-neutral-300 text-sm">
+        <li>A precondition for using the desktop app. Atlasmc the application will always be free, open source, and Apache-2.0.</li>
+        <li>Required to generate worlds, download releases, or contribute code.</li>
+        <li>An offering of securities. Holders should not expect profit derived from the efforts of others.</li>
+        <li>Endorsed by, affiliated with, or representative of upstream Arnis or Louis Erbkamm.</li>
+      </ul>
+    </div>
+
+    <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6">
+      <h2 class="text-xl font-semibold mb-3">Updates</h2>
+      <p class="text-neutral-300 text-sm leading-relaxed">
+        All token-related announcements will go through the
+        <a href="https://github.com/kodekaze1/atlasmc" target="_blank" rel="noopener" class="text-[var(--color-accent-bright)] underline">GitHub repository</a>
+        first. Watch the repo for tagged releases and discussions. If we
+        publish a whitepaper, audit report, or transparency dashboard,
+        they will be linked here and from the project README before any
+        sale. Anyone claiming an &ldquo;official Atlasmc presale&rdquo; on Telegram,
+        Discord, X, or anywhere else without a corresponding release on
+        this site and the GitHub repo is a scam &mdash; treat it as such.
+      </p>
+    </div>
+
+    <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6">
+      <h2 class="text-xl font-semibold mb-3">Disclaimer</h2>
+      <p class="text-neutral-400 text-sm leading-relaxed">
+        Cryptocurrency tokens carry significant risk and may be classified
+        as securities in your jurisdiction. Nothing on this page is
+        financial, legal, or tax advice. Consult a licensed professional
+        in your country before participating in any token-related
+        activity. Atlasmc and its maintainers will not be liable for
+        decisions made based on this page&rsquo;s content. This page may be
+        updated as the project&rsquo;s plans change.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
