@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap will be enabled once @astrojs/sitemap is added.
-# Sitemap: https://atlasmc-web.vercel.app/sitemap-index.xml
+Sitemap: https://atlasmc-web.vercel.app/sitemap-index.xml
