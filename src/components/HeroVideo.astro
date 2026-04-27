@@ -1,0 +1,39 @@
+---
+// Drop a looping flythrough video into /public/hero/. Provide both
+// /public/hero/flythrough.webm (smaller, modern browsers) AND
+// /public/hero/flythrough.mp4 (Safari + universal fallback).
+// The poster image (/public/hero/poster.jpg) shows while the video
+// downloads and as a fallback if both video sources fail.
+
+interface Props {
+  webm?: string;
+  mp4?: string;
+  poster?: string;
+}
+
+const {
+  webm = '/hero/flythrough.webm',
+  mp4 = '/hero/flythrough.mp4',
+  poster = '/hero/poster.jpg',
+} = Astro.props;
+---
+<div class="absolute inset-0 -z-10 overflow-hidden bg-[var(--color-bg)]">
+  {/* Fallback grid background — shows through if no video and no poster are present. */}
+  <div class="absolute inset-0 hero-grid pointer-events-none" aria-hidden="true"></div>
+
+  <video
+    class="hero-video absolute inset-0 w-full h-full object-cover"
+    poster={poster}
+    autoplay
+    loop
+    muted
+    playsinline
+    preload="metadata"
+  >
+    <source src={webm} type="video/webm" />
+    <source src={mp4} type="video/mp4" />
+  </video>
+
+  {/* Darkening overlay so the foreground card stays legible regardless of frame. */}
+  <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/70 pointer-events-none"></div>
+</div>

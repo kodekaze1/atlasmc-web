@@ -42,29 +42,9 @@ body {
     0 5px 6px rgba(0, 0, 0, 0.55);
 }
 
-/* Hero slideshow: fade between stacked images on a 21s loop with 7s stagger.
-   Add or remove .hero-slide elements; the keyframe stays the same — just
-   adjust each slide's animation-delay inline (i * 7s). */
-.hero-slide {
-  opacity: 0;
-  animation: hero-fade 21s infinite cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: opacity, transform;
-}
-
-@keyframes hero-fade {
-  0%   { opacity: 0; transform: scale(1.05); }
-  5%   { opacity: 1; }
-  33%  { opacity: 1; transform: scale(1.10); }
-  38%  { opacity: 0; }
-  100% { opacity: 0; transform: scale(1.05); }
-}
-
+/* Hero video honors reduced-motion: pause and hide so the poster takes over. */
 @media (prefers-reduced-motion: reduce) {
-  .hero-slide {
-    animation: none;
-    opacity: 1;
-  }
-  .hero-slide:not(:first-child) {
+  video.hero-video {
     display: none;
   }
 }
