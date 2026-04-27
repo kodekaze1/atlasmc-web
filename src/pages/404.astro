@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="404 — Atlasmc" description="Page not found.">
+  <section class="max-w-2xl mx-auto px-6 pt-24 pb-16 text-center">
+    <p class="logo-pixel text-7xl text-[var(--color-accent-bright)] mb-4">404</p>
+    <h1 class="text-3xl font-bold tracking-tight">Page not found</h1>
+    <p class="mt-4 text-neutral-300">
+      That URL doesn&rsquo;t map to anything we know about. The page may have moved,
+      or it might have never existed.
+    </p>
+    <div class="mt-8 flex items-center justify-center gap-3 flex-wrap">
+      <a href="/" class="inline-flex items-center px-5 py-2.5 rounded-md bg-[var(--color-accent)] text-neutral-950 font-medium hover:bg-[var(--color-accent-bright)] transition">
+        Back to home
+      </a>
+      <a href="/download" class="inline-flex items-center px-5 py-2.5 rounded-md border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent-bright)] transition">
+        Download
+      </a>
+    </div>
+  </section>
+</BaseLayout>

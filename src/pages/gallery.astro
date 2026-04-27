@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Once you have screenshots, drop them in /public/gallery/ and add an
+// entry per image to this list. Each item renders as a card in the grid.
+//
+// Suggested filenames: city-1.jpg, city-2.jpg, … so paths stay predictable.
+
+interface Shot {
+  src: string;
+  alt: string;
+  title: string;
+  caption?: string;
+}
+
+const shots: Shot[] = [
+  // Example entry — uncomment and fill in once you have a real screenshot.
+  // {
+  //   src: '/gallery/nyc.jpg',
+  //   alt: 'Lower Manhattan rendered as a Minecraft world',
+  //   title: 'New York City',
+  //   caption: 'Generated from OSM data, AWS Terrain Tiles, and ESA WorldCover.',
+  // },
+];
+---
+<BaseLayout title="Gallery — Atlasmc" description="Real-world Minecraft worlds generated with Atlasmc.">
+  <section class="max-w-6xl mx-auto px-6 pt-16 pb-10">
+    <h1 class="text-4xl font-bold tracking-tight">Gallery</h1>
+    <p class="mt-4 text-lg text-neutral-300">
+      Real cities, towns, and landscapes rendered as playable Minecraft worlds.
+    </p>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    {shots.length === 0 ? (
+      <div class="rounded-lg border border-dashed border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-12 text-center">
+        <p class="text-neutral-300 mb-2">No screenshots yet.</p>
+        <p class="text-sm text-neutral-500">
+          Generate worlds with Atlasmc, capture screenshots in Minecraft (F2),
+          drop them in <code class="bg-black/40 px-1 rounded">public/gallery/</code>,
+          and add entries to <code class="bg-black/40 px-1 rounded">src/pages/gallery.astro</code>.
+        </p>
+      </div>
+    ) : (
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {shots.map(({ src, alt, title, caption }) => (
+          <figure class="rounded-lg overflow-hidden border border-[var(--color-border)] bg-[var(--color-bg-elevated)] group">
+            <div class="aspect-video overflow-hidden">
+              <img
+                src={src}
+                alt={alt}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption class="p-4">
+              <h3 class="font-semibold text-[var(--color-accent-bright)]">{title}</h3>
+              {caption && <p class="text-sm text-neutral-400 mt-1">{caption}</p>}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    )}
+  </section>
+</BaseLayout>
