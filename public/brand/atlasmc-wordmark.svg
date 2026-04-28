@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 100" preserveAspectRatio="xMidYMid meet">
+  <title>Atlasmc wordmark</title>
+  <style>
+    .wordmark {
+      font-family: 'Pixelify Sans', 'Press Start 2P', 'Courier New', monospace;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      fill: #a3e44a;
+    }
+  </style>
+  <text x="240" y="68" text-anchor="middle" font-size="60" class="wordmark">ATLASMC</text>
+</svg>

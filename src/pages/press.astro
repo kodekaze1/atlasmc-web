@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const boilerplate = `Atlasmc is an open-source desktop application that turns real-world OpenStreetMap data and global elevation tiles into playable Minecraft Java Edition (1.17+) and Bedrock Edition worlds. It's a fork of Arnis by Louis Erbkamm, licensed under Apache 2.0. Atlasmc supports schematic export, server bundles for self-hosted multiplayer, and 18 languages. The project is preparing a community token to fund continued development; the desktop app remains free and open source regardless.`;
+
+const colors = [
+  { name: 'Accent (green)', hex: '#a3e44a', oklch: 'oklch(0.74 0.18 145)' },
+  { name: 'Accent bright', hex: '#c1f17a', oklch: 'oklch(0.82 0.21 145)' },
+  { name: 'Background', hex: '#1f2422', oklch: 'oklch(0.16 0.005 240)' },
+  { name: 'Surface', hex: '#2a3030', oklch: 'oklch(0.21 0.008 240)' },
+];
+---
+<BaseLayout
+  title="Press kit — Atlasmc"
+  description="Brand assets, boilerplate, and contact for press, podcasters, and content creators covering Atlasmc."
+>
+  <section class="max-w-3xl mx-auto px-6 pt-16 pb-10">
+    <p class="inline-block text-xs font-medium tracking-widest uppercase text-[var(--color-accent-bright)] mb-3">
+      Press kit
+    </p>
+    <h1 class="text-4xl font-bold tracking-tight">Cover Atlasmc.</h1>
+    <p class="mt-5 text-lg text-neutral-300 leading-relaxed">
+      Brand assets, boilerplate copy, and a contact email for press,
+      podcasters, content creators, and anyone covering Atlasmc. Use what you
+      need; if you&rsquo;re unsure whether something&rsquo;s OK, just email us.
+    </p>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-6 pb-12">
+    <h2 class="text-2xl font-semibold tracking-tight mb-3">Boilerplate</h2>
+    <p class="text-neutral-400 text-sm mb-3">
+      Drop this into an article&rsquo;s "About the project" sidebar. ~70 words.
+    </p>
+    <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6">
+      <p class="text-neutral-200 leading-relaxed text-sm" set:text={boilerplate}></p>
+    </div>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-6 pb-12">
+    <h2 class="text-2xl font-semibold tracking-tight mb-3">Logos &amp; wordmarks</h2>
+    <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6 space-y-4">
+      <div class="flex items-center justify-between gap-4 flex-wrap">
+        <div class="flex items-center gap-4">
+          <div class="logo-pixel-wordmark text-3xl">ATLASMC</div>
+          <span class="text-sm text-neutral-400">Wordmark · Pixelify Sans Bold</span>
+        </div>
+        <a
+          href="/brand/atlasmc-wordmark.svg"
+          download
+          class="text-sm px-4 py-2 rounded-md border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent-bright)] transition"
+        >Download SVG</a>
+      </div>
+      <p class="text-sm text-neutral-400">
+        The wordmark uses
+        <a href="https://fonts.google.com/specimen/Pixelify+Sans" target="_blank" rel="noopener" class="text-[var(--color-accent-bright)] underline">Pixelify Sans</a>
+        (SIL Open Font License). The pixel-A favicon and any future logo art
+        are forthcoming &mdash; this page will list them once they ship.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-6 pb-12">
+    <h2 class="text-2xl font-semibold tracking-tight mb-3">Colors</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+      {colors.map(({ name, hex, oklch }) => (
+        <div class="rounded-lg overflow-hidden border border-[var(--color-border)]">
+          <div class="aspect-video" style={`background: ${hex};`}></div>
+          <div class="p-3 bg-[var(--color-bg-elevated)]">
+            <p class="text-sm font-medium">{name}</p>
+            <p class="text-xs text-neutral-400 font-mono mt-1">{hex}</p>
+            <p class="text-xs text-neutral-500 font-mono">{oklch}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-6 pb-12">
+    <h2 class="text-2xl font-semibold tracking-tight mb-3">Screenshots</h2>
+    <p class="text-neutral-400 text-sm mb-4">
+      Screenshots of generated worlds are pending &mdash; this section will
+      populate once we&rsquo;ve captured a curated set. In the meantime, the
+      upstream Arnis project has a public press image set:
+      <a href="https://drive.google.com/file/d/1T1IsZSyT8oa6qAO_40hVF5KR8eEVCJjo/view?usp=sharing" target="_blank" rel="noopener" class="text-[var(--color-accent-bright)] underline">Arnis press assets</a>.
+      Coverage of the underlying engine should generally credit upstream Arnis;
+      coverage of the Atlasmc fork should credit Atlasmc with the upstream
+      attribution noted.
+    </p>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-6 pb-12">
+    <h2 class="text-2xl font-semibold tracking-tight mb-3">Naming &amp; usage</h2>
+    <ul class="list-disc pl-5 marker:text-[var(--color-accent)] space-y-2 text-neutral-300 text-sm">
+      <li><strong class="text-neutral-100">Atlasmc</strong> &mdash; one word, capital A. Not "AtlasMC", not "Atlas MC", not "atlas-mc". Pronounced "AT-las-em-cee".</li>
+      <li>Don&rsquo;t use Atlasmc branding to imply endorsement of products, content, or services we haven&rsquo;t reviewed.</li>
+      <li>You can use the wordmark and screenshots freely in editorial coverage. For commercial reuse outside coverage, email us first.</li>
+      <li>Always include a "NOT AN OFFICIAL MINECRAFT PRODUCT" line when relevant. Minecraft is a trademark of Mojang Synergies AB.</li>
+    </ul>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-6 pb-20">
+    <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6">
+      <h2 class="text-xl font-semibold mb-2">Contact</h2>
+      <p class="text-neutral-300 text-sm mb-3">
+        For press inquiries, demos, embargoed announcements, or anything
+        else not covered above:
+      </p>
+      <a href="mailto:kodekaze1@gmail.com" class="text-[var(--color-accent-bright)] underline text-sm">kodekaze1@gmail.com</a>
+      <p class="text-xs text-neutral-500 mt-3">
+        Subject line prefix <code class="bg-black/40 px-1 rounded">[atlasmc-press]</code> appreciated for routing.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

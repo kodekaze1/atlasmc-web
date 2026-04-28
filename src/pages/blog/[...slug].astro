@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const dateFmt = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
+---
+<BaseLayout title={`${post.data.title} — Atlasmc Blog`} description={post.data.description}>
+  <article class="max-w-3xl mx-auto px-6 pt-16 pb-20">
+    <p class="text-xs uppercase tracking-widest text-neutral-500 mb-3">
+      <a href="/blog" class="hover:text-[var(--color-accent-bright)]">Blog</a>
+      <span class="mx-2">·</span>
+      <time>{dateFmt.format(post.data.pubDate)}</time>
+    </p>
+    <h1 class="text-4xl font-bold tracking-tight mb-3">{post.data.title}</h1>
+    <p class="text-lg text-neutral-300 leading-relaxed mb-8">{post.data.description}</p>
+
+    <div class="prose prose-invert prose-headings:font-semibold prose-headings:tracking-tight prose-a:text-[var(--color-accent-bright)] prose-strong:text-neutral-100 prose-code:text-[var(--color-accent-bright)] prose-code:bg-black/40 prose-code:px-1 prose-code:rounded prose-pre:bg-black/40 prose-pre:border prose-pre:border-[var(--color-border)] max-w-none">
+      <Content />
+    </div>
+
+    <hr class="my-12 border-[var(--color-border)]" />
+
+    <p class="text-sm text-neutral-400">
+      &mdash; {post.data.author}
+    </p>
+  </article>
+</BaseLayout>
