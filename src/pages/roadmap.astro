@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface Phase {
+  status: 'done' | 'now' | 'next' | 'later';
+  title: string;
+  blurb: string;
+  items: string[];
+}
+
+const phases: Phase[] = [
+  {
+    status: 'done',
+    title: 'Phase 1 — Foundation',
+    blurb: 'Fork, rebrand, ship.',
+    items: [
+      'Forked Arnis (Apache-2.0) under the Atlasmc name with full attribution.',
+      'Rebranded the desktop app, GUI, and 18 locales.',
+      'Removed every upstream-only network endpoint.',
+      'Stood up the marketing site at atlasmc-web.vercel.app.',
+      'CI/CD pipeline producing cross-platform release binaries.',
+    ],
+  },
+  {
+    status: 'done',
+    title: 'Phase 2 — First public release',
+    blurb: 'Atlasmc v2.7.x available on GitHub Releases.',
+    items: [
+      'Visual refresh of the desktop GUI.',
+      'Sponge .schem schematic export (--schem).',
+      'Multiplayer server bundle export (--server-bundle).',
+      'Pluggable Overpass mirrors (--overpass-url).',
+      'Project hygiene: CONTRIBUTING, SECURITY, CHANGELOG, NOTICE.',
+    ],
+  },
+  {
+    status: 'now',
+    title: 'Phase 3 — Pre-launch hardening',
+    blurb: 'What we&rsquo;re actively doing right now.',
+    items: [
+      'Block-state preservation in schematic export (stair facing, slab type, etc.).',
+      'Real Authenticode certificate so Windows binaries are signed.',
+      'Custom domain + email + branded logo.',
+      'Public-facing whitepaper and tokenomics doc finalized.',
+      'Independent smart-contract auditor selection.',
+      'Legal review across primary jurisdictions.',
+    ],
+  },
+  {
+    status: 'next',
+    title: 'Phase 4 — Token launch',
+    blurb: 'Sequenced milestones; each one gates the next.',
+    items: [
+      'Public testnet of the token contract (≥ 30 days).',
+      'Audit report published alongside the contract address.',
+      'Bug bounty live for ≥ 90 days post-launch.',
+      'Community feedback period before mainnet (≥ 14 days).',
+      'TGE on a chain we publish in advance with rationale.',
+      'Locked liquidity for ≥ 4 years via a third-party locker.',
+    ],
+  },
+  {
+    status: 'later',
+    title: 'Phase 5 — Hosted generator',
+    blurb: 'Browser-based world generation, like upstream MapSmith.',
+    items: [
+      'Headless mode of the desktop generator behind a REST/WebSocket API.',
+      'Hosted tier for users without the hardware to run locally.',
+      'Token-gated free quota for community members.',
+      'Pay-per-area for non-token users.',
+    ],
+  },
+  {
+    status: 'later',
+    title: 'Phase 6 — Plugin ecosystem',
+    blurb: 'Atlasmc as a platform.',
+    items: [
+      'Plugin API for community-written OSM element processors.',
+      'Custom block palette packs (medieval, modern, sci-fi).',
+      'Token-funded grants for high-quality plugins.',
+      'Marketplace for paid extensions, with creators retaining most revenue.',
+    ],
+  },
+];
+
+const statusLabels: Record<Phase['status'], string> = {
+  done: 'Shipped',
+  now: 'In progress',
+  next: 'Up next',
+  later: 'Later',
+};
+
+const statusClasses: Record<Phase['status'], string> = {
+  done: 'bg-[var(--color-accent)]/15 text-[var(--color-accent-bright)] border-[var(--color-accent)]/40',
+  now: 'bg-amber-500/15 text-amber-300 border-amber-400/40',
+  next: 'bg-blue-500/15 text-blue-300 border-blue-400/40',
+  later: 'bg-neutral-500/15 text-neutral-400 border-neutral-500/40',
+};
+---
+<BaseLayout
+  title="Roadmap — Atlasmc"
+  description="What's shipped, what we're working on now, and what's planned. Atlasmc development roadmap."
+>
+  <section class="max-w-3xl mx-auto px-6 pt-16 pb-10">
+    <p class="inline-block text-xs font-medium tracking-widest uppercase text-[var(--color-accent-bright)] mb-3">
+      Roadmap
+    </p>
+    <h1 class="text-4xl font-bold tracking-tight">What we&rsquo;re building, in order.</h1>
+    <p class="mt-5 text-lg text-neutral-300 leading-relaxed">
+      Six phases, sequenced so each one&rsquo;s outputs gate the next.
+      Dates are deliberately not committed &mdash; small team, real
+      software, &ldquo;ship when ready&rdquo; rather than ship-by-date.
+      The phases marked <em>Shipped</em> are real and verifiable in the
+      <a href="https://github.com/kodekaze1/atlasmc" target="_blank" rel="noopener" class="text-[var(--color-accent-bright)] underline">GitHub repo</a>.
+    </p>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-6 pb-20 space-y-5">
+    {phases.map(({ status, title, blurb, items }) => (
+      <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6">
+        <div class="flex items-start justify-between gap-4 flex-wrap mb-3">
+          <h2 class="text-xl font-semibold">{title}</h2>
+          <span class:list={[
+            'text-xs font-medium px-2.5 py-1 rounded border',
+            statusClasses[status],
+          ]}>
+            {statusLabels[status]}
+          </span>
+        </div>
+        <p class="text-sm text-neutral-400 mb-4">{blurb}</p>
+        <ul class="space-y-1.5">
+          {items.map(item => (
+            <li class="text-sm text-neutral-300 flex items-start gap-2">
+              <span class="text-[var(--color-accent-bright)] flex-shrink-0 mt-0.5">›</span>
+              <span set:html={item}></span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </section>
+</BaseLayout>

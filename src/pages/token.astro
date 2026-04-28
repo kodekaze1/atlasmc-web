@@ -1,74 +1,135 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
 
-// This page is intentionally NOT linked from the main nav until the
-// project is ready to publicly announce token plans. It's reachable at
-// /token for direct linking only.
+const utility = [
+  {
+    title: 'Treasury funding',
+    body: 'A meaningful treasury cut funds ongoing development, infrastructure (Overpass mirrors, elevation tile caches, hosted generator), and community grants. Spending is transparent on-chain.',
+  },
+  {
+    title: 'Hosted-tier access',
+    body: 'Token holders get free or discounted access to the hosted browser-based generator (the equivalent of upstream MapSmith) when it ships in Phase 5.',
+  },
+  {
+    title: 'Governance',
+    body: 'Lightweight on-chain (or Snapshot off-chain) voting on non-critical project decisions: feature prioritization, grant program direction, treasury spending policies.',
+  },
+  {
+    title: 'Plugin marketplace',
+    body: 'Phase 6 introduces a plugin ecosystem. Token holders get a fee-discount lane and creators retain most of their revenue. Token-funded grants seed the first wave of plugins.',
+  },
+];
+
+const guarantees = [
+  'The desktop app stays free, open source, and Apache 2.0 forever. The token never gates core features.',
+  'Generation works without a wallet, without a token, without an account.',
+  'Independent smart-contract audit before mainnet deployment, with the report published alongside the contract address.',
+  'Liquidity locked for 4+ years via a third-party locker, verifiable on-chain.',
+  'Treasury controlled by a multi-sig with disclosed signers. Quarterly transparency reports.',
+  'Public testnet for at least 30 days before any mainnet deployment.',
+];
 ---
 <BaseLayout
   title="Token — Atlasmc"
-  description="Atlasmc is exploring a community token to fund development. No sale yet, no contract deployed, no allocation guarantees."
+  description="Atlasmc is preparing a community token to fund continued development. Pre-launch — read the plan, sign up for launch notifications."
 >
-  <section class="max-w-3xl mx-auto px-6 pt-16 pb-10">
-    <p class="inline-block text-xs font-medium tracking-widest uppercase text-[var(--color-accent-bright)] mb-4">
-      Status · Exploring
+  <!-- Hero -->
+  <section class="max-w-3xl mx-auto px-6 pt-16 pb-12 text-center">
+    <p class="inline-flex items-center gap-2 text-xs font-medium tracking-widest uppercase text-[var(--color-accent-bright)] mb-5">
+      <span class="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse"></span>
+      Pre-launch
     </p>
-    <h1 class="text-4xl font-bold tracking-tight">Atlasmc Token</h1>
-    <p class="mt-5 text-lg text-neutral-300 leading-relaxed">
-      We&rsquo;re exploring a community token as a way to fund continued
-      development of Atlasmc and the underlying open-source desktop app.
-      Nothing has been launched. No contract is deployed. There is no
-      sale, no presale, no allocation, and no investment opportunity at
-      this time.
+    <h1 class="text-4xl md:text-5xl font-bold tracking-tight leading-[1.1]">
+      The Atlasmc Token funds <span class="text-[var(--color-accent-bright)]">continued development</span>.
+    </h1>
+    <p class="mt-6 text-lg text-neutral-300 leading-relaxed max-w-2xl mx-auto">
+      Atlasmc the desktop app will always be free. The token funds the bigger
+      bets &mdash; hosted generator, plugin ecosystem, infrastructure
+      &mdash; that pure donations can&rsquo;t cover. Nothing has launched yet.
+      Read the plan; sign up to be notified when it does.
     </p>
   </section>
 
-  <section class="max-w-3xl mx-auto px-6 pb-16 space-y-8">
+  <!-- Newsletter (front and center for pre-launch) -->
+  <section class="max-w-2xl mx-auto px-6 pb-16">
+    <NewsletterSignup variant="card" />
+  </section>
+
+  <!-- Utility -->
+  <section class="max-w-5xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-semibold tracking-tight mb-2 text-center">What the token actually does</h2>
+    <p class="text-neutral-400 text-center mb-10 max-w-2xl mx-auto">
+      Utility-first. Not an investment vehicle, not a passive yield product, not a vehicle for &ldquo;number go up.&rdquo;
+    </p>
+    <div class="grid md:grid-cols-2 gap-5">
+      {utility.map(({ title, body }) => (
+        <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6">
+          <h3 class="font-semibold text-[var(--color-accent-bright)] mb-2">{title}</h3>
+          <p class="text-sm text-neutral-300 leading-relaxed">{body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Guarantees -->
+  <section class="max-w-3xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-semibold tracking-tight mb-2">Our guarantees</h2>
+    <p class="text-neutral-400 mb-6">
+      Things we&rsquo;re committing to before launch, that you can hold us
+      to.
+    </p>
     <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6">
-      <h2 class="text-xl font-semibold mb-3">What we&rsquo;re considering</h2>
-      <ul class="list-disc pl-5 marker:text-[var(--color-accent)] space-y-2 text-neutral-300 text-sm">
-        <li>A utility token tied to the Atlasmc project &mdash; not a security and not an investment.</li>
-        <li>Treasury funding for development, infrastructure (hosted generator, tile caches), and community grants.</li>
-        <li>Lightweight on-chain governance for non-critical project decisions.</li>
-        <li>Transparent vesting and unlock schedule, published before any sale.</li>
-        <li>Independent smart-contract audit before any deployment.</li>
+      <ul class="space-y-3">
+        {guarantees.map(g => (
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-[var(--color-accent)] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+            </svg>
+            <span class="text-sm text-neutral-300 leading-relaxed">{g}</span>
+          </li>
+        ))}
       </ul>
     </div>
+  </section>
 
-    <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6">
-      <h2 class="text-xl font-semibold mb-3">What it is not</h2>
-      <ul class="list-disc pl-5 marker:text-[var(--color-accent)] space-y-2 text-neutral-300 text-sm">
-        <li>A precondition for using the desktop app. Atlasmc the application will always be free, open source, and Apache-2.0.</li>
-        <li>Required to generate worlds, download releases, or contribute code.</li>
-        <li>An offering of securities. Holders should not expect profit derived from the efforts of others.</li>
-        <li>Endorsed by, affiliated with, or representative of upstream Arnis or Louis Erbkamm.</li>
-      </ul>
+  <!-- What it is not -->
+  <section class="max-w-3xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-semibold tracking-tight mb-3">What it is not</h2>
+    <ul class="list-disc pl-5 marker:text-[var(--color-accent)] space-y-2 text-neutral-300 text-sm">
+      <li>An offering of securities. Holders should not expect profit derived from the efforts of others.</li>
+      <li>A precondition for using Atlasmc. The desktop app stays free and Apache-2.0 indefinitely.</li>
+      <li>Endorsed by, affiliated with, or representative of upstream Arnis or Louis Erbkamm.</li>
+      <li>Live yet. There is no contract deployed, no presale, no allocation, and no place to buy. If you see a &ldquo;buy Atlasmc presale&rdquo; offer anywhere right now, it&rsquo;s a scam.</li>
+    </ul>
+  </section>
+
+  <!-- Roadmap link -->
+  <section class="max-w-3xl mx-auto px-6 pb-12">
+    <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6 flex items-center justify-between gap-4 flex-wrap">
+      <div>
+        <h3 class="text-lg font-semibold mb-1">Where this fits in the roadmap</h3>
+        <p class="text-sm text-neutral-400">Token launch is Phase 4. We&rsquo;re in Phase 3 hardening now.</p>
+      </div>
+      <a href="/roadmap" class="inline-flex items-center px-5 py-2.5 rounded-md border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent-bright)] transition whitespace-nowrap">
+        See the roadmap →
+      </a>
     </div>
+  </section>
 
-    <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6">
-      <h2 class="text-xl font-semibold mb-3">Updates</h2>
-      <p class="text-neutral-300 text-sm leading-relaxed">
-        All token-related announcements will go through the
-        <a href="https://github.com/kodekaze1/atlasmc" target="_blank" rel="noopener" class="text-[var(--color-accent-bright)] underline">GitHub repository</a>
-        first. Watch the repo for tagged releases and discussions. If we
-        publish a whitepaper, audit report, or transparency dashboard,
-        they will be linked here and from the project README before any
-        sale. Anyone claiming an &ldquo;official Atlasmc presale&rdquo; on Telegram,
-        Discord, X, or anywhere else without a corresponding release on
-        this site and the GitHub repo is a scam &mdash; treat it as such.
-      </p>
-    </div>
-
-    <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6">
-      <h2 class="text-xl font-semibold mb-3">Disclaimer</h2>
-      <p class="text-neutral-400 text-sm leading-relaxed">
-        Cryptocurrency tokens carry significant risk and may be classified
-        as securities in your jurisdiction. Nothing on this page is
-        financial, legal, or tax advice. Consult a licensed professional
-        in your country before participating in any token-related
-        activity. Atlasmc and its maintainers will not be liable for
-        decisions made based on this page&rsquo;s content. This page may be
-        updated as the project&rsquo;s plans change.
+  <!-- Disclaimer -->
+  <section class="max-w-3xl mx-auto px-6 pb-20">
+    <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] p-6">
+      <h3 class="text-sm font-semibold text-neutral-300 uppercase tracking-wider mb-3">Disclaimer</h3>
+      <p class="text-sm text-neutral-400 leading-relaxed">
+        Cryptocurrency tokens carry significant risk and may be classified as
+        securities in your jurisdiction. Nothing on this page is financial,
+        legal, or tax advice. Consult a licensed professional in your country
+        before participating in any token-related activity. See
+        <a href="/terms" class="text-[var(--color-accent-bright)] underline">Terms</a>
+        and
+        <a href="/privacy" class="text-[var(--color-accent-bright)] underline">Privacy</a>
+        for the full picture. Plans on this page may change as the project evolves.
       </p>
     </div>
   </section>

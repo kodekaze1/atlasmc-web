@@ -1,20 +1,77 @@
 ---
 const year = new Date().getFullYear();
+
+const productLinks = [
+  { href: '/features', label: 'Features' },
+  { href: '/download', label: 'Download' },
+  { href: '/gallery', label: 'Gallery' },
+  { href: '/docs', label: 'Docs' },
+];
+const projectLinks = [
+  { href: '/roadmap', label: 'Roadmap' },
+  { href: '/token', label: 'Token' },
+  { href: '/about', label: 'About' },
+  { href: '/faq', label: 'FAQ' },
+];
+const legalLinks = [
+  { href: '/privacy', label: 'Privacy' },
+  { href: '/terms', label: 'Terms' },
+  { href: 'https://github.com/kodekaze1/atlasmc/blob/main/NOTICE', label: 'NOTICE', external: true },
+  { href: 'https://github.com/kodekaze1/atlasmc/blob/main/LICENSE', label: 'License', external: true },
+];
 ---
 <footer class="border-t border-[var(--color-border)] mt-24">
-  <div class="max-w-6xl mx-auto px-6 py-10 text-sm text-neutral-400 space-y-3">
-    <p>
-      &copy; {year} Atlasmc — fork of
-      <a href="https://github.com/louis-e/arnis" target="_blank" rel="noopener" class="underline hover:text-[var(--color-accent-bright)]">Arnis</a>
-      by Louis Erbkamm. Licensed under
-      <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener" class="underline hover:text-[var(--color-accent-bright)]">Apache 2.0</a>.
-      See the bundled
-      <a href="https://github.com/kodekaze1/atlasmc/blob/main/NOTICE" target="_blank" rel="noopener" class="underline hover:text-[var(--color-accent-bright)]">NOTICE</a>
-      file for attribution and the list of fork modifications.
-    </p>
-    <p class="text-xs text-neutral-500">
-      NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.
-      &ldquo;Minecraft&rdquo; is a trademark of Mojang Synergies AB.
-    </p>
+  <div class="max-w-6xl mx-auto px-6 py-12">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+      <div class="col-span-2 md:col-span-1">
+        <div class="logo-pixel-wordmark text-2xl mb-3">ATLASMC</div>
+        <p class="text-sm text-neutral-400 leading-relaxed">
+          Real-world locations in Minecraft. Open source, Apache 2.0.
+        </p>
+      </div>
+      <div>
+        <h3 class="text-xs font-semibold uppercase tracking-widest text-neutral-500 mb-3">Product</h3>
+        <ul class="space-y-2">
+          {productLinks.map(({ href, label }) => (
+            <li><a href={href} class="text-sm text-neutral-400 hover:text-[var(--color-accent-bright)] transition">{label}</a></li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xs font-semibold uppercase tracking-widest text-neutral-500 mb-3">Project</h3>
+        <ul class="space-y-2">
+          {projectLinks.map(({ href, label }) => (
+            <li><a href={href} class="text-sm text-neutral-400 hover:text-[var(--color-accent-bright)] transition">{label}</a></li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xs font-semibold uppercase tracking-widest text-neutral-500 mb-3">Legal</h3>
+        <ul class="space-y-2">
+          {legalLinks.map(({ href, label, external }) => (
+            <li>
+              <a
+                href={href}
+                target={external ? '_blank' : undefined}
+                rel={external ? 'noopener' : undefined}
+                class="text-sm text-neutral-400 hover:text-[var(--color-accent-bright)] transition"
+              >{label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-[var(--color-border)] pt-6 text-sm text-neutral-400 space-y-2">
+      <p>
+        &copy; {year} Atlasmc &mdash; fork of
+        <a href="https://github.com/louis-e/arnis" target="_blank" rel="noopener" class="underline hover:text-[var(--color-accent-bright)]">Arnis</a>
+        by Louis Erbkamm. Licensed under Apache 2.0.
+      </p>
+      <p class="text-xs text-neutral-500">
+        NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.
+        &ldquo;Minecraft&rdquo; is a trademark of Mojang Synergies AB.
+      </p>
+    </div>
   </div>
 </footer>

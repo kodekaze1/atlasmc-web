@@ -1,0 +1,58 @@
+---
+// Pre-launch newsletter signup. Submission opens the user's mail client
+// with a pre-filled message — no backend, no third-party processor, no
+// privacy footnotes needed yet. When a real email service is in place
+// (Formspree, ConvertKit, Resend, etc.), swap the action to that endpoint
+// and remove the mailto bits.
+//
+// Configure via env later: PUBLIC_NEWSLETTER_ENDPOINT or similar.
+
+interface Props {
+  variant?: 'inline' | 'card';
+}
+
+const { variant = 'card' } = Astro.props;
+---
+<form
+  action="mailto:kodekaze1@gmail.com"
+  method="POST"
+  enctype="text/plain"
+  class:list={[
+    'newsletter-form',
+    variant === 'card'
+      ? 'rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6 max-w-xl mx-auto'
+      : 'flex flex-col sm:flex-row gap-3 max-w-md',
+  ]}
+>
+  {variant === 'card' && (
+    <div class="mb-4">
+      <h3 class="text-lg font-semibold text-[var(--color-accent-bright)]">Get notified at launch</h3>
+      <p class="text-sm text-neutral-400 mt-1">
+        We&rsquo;ll only email you for the token launch and major releases.
+        No marketing, no spam.
+      </p>
+    </div>
+  )}
+  <div class={variant === 'card' ? 'flex flex-col sm:flex-row gap-3' : 'contents'}>
+    <input
+      type="email"
+      name="email"
+      required
+      placeholder="you@example.com"
+      class="flex-1 px-4 py-2.5 rounded-md bg-[var(--color-bg)] border border-[var(--color-border)] text-neutral-100 placeholder-neutral-500 focus:outline-none focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/30 transition"
+      aria-label="Email address"
+    />
+    <button
+      type="submit"
+      class="px-5 py-2.5 rounded-md bg-[var(--color-accent)] text-neutral-950 font-medium hover:bg-[var(--color-accent-bright)] transition whitespace-nowrap"
+    >
+      Notify me
+    </button>
+  </div>
+  {variant === 'card' && (
+    <p class="text-xs text-neutral-500 mt-3">
+      We&rsquo;ll handle your email per our
+      <a href="/privacy" class="underline hover:text-neutral-300">privacy notice</a>.
+    </p>
+  )}
+</form>

@@ -1,11 +1,11 @@
 ---
 const navItems = [
   { href: '/features', label: 'Features' },
-  { href: '/gallery', label: 'Gallery' },
   { href: '/download', label: 'Download' },
   { href: '/docs', label: 'Docs' },
+  { href: '/roadmap', label: 'Roadmap' },
+  { href: '/token', label: 'Token', highlight: true },
   { href: '/faq', label: 'FAQ' },
-  { href: '/about', label: 'About' },
 ];
 const path = Astro.url.pathname;
 ---
@@ -15,15 +15,19 @@ const path = Astro.url.pathname;
       ATLASMC
     </a>
     <nav class="flex items-center gap-6">
-      {navItems.map(({ href, label }) => (
+      {navItems.map(({ href, label, highlight }) => (
         <a
           href={href}
           class:list={[
-            'text-sm transition hover:text-[var(--color-accent-bright)]',
+            'text-sm transition hover:text-[var(--color-accent-bright)] flex items-center gap-1.5',
             path === href ? 'text-[var(--color-accent-bright)]' : 'text-neutral-300',
+            highlight && 'font-medium',
           ]}
         >
           {label}
+          {highlight && (
+            <span class="inline-block w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] animate-pulse" aria-hidden="true"></span>
+          )}
         </a>
       ))}
       <a

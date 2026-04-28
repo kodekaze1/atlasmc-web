@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const lastUpdated = '2026-04-28';
+---
+<BaseLayout title="Privacy — Atlasmc" description="Atlasmc privacy notice. We don't collect personal data.">
+  <article class="max-w-3xl mx-auto px-6 pt-16 pb-20">
+    <p class="text-xs uppercase tracking-widest text-neutral-500">Last updated {lastUpdated}</p>
+    <h1 class="text-4xl font-bold tracking-tight mt-3 mb-6">Privacy</h1>
+
+    <p class="text-lg text-neutral-300 leading-relaxed">
+      Short version: this site doesn&rsquo;t collect personal data, and the
+      Atlasmc desktop app has telemetry off by default. The longer version
+      below covers the few exceptions and what you can do about them.
+    </p>
+
+    <h2 class="text-2xl font-semibold tracking-tight mt-12 mb-3">This website</h2>
+    <ul class="list-disc pl-5 marker:text-[var(--color-accent)] space-y-2 text-neutral-300">
+      <li>No analytics. No tracking pixels. No advertising trackers.</li>
+      <li>Google Fonts is loaded over HTTPS to serve the page typefaces. Google may receive your IP address as part of the request. We do not set cookies or pass identifiers.</li>
+      <li>Vercel hosts the site and may log standard request metadata (IP, User-Agent, request path) for abuse mitigation. We do not access these logs for marketing or analytics.</li>
+      <li>If you submit a newsletter signup form, your email is processed by the third party we name on the form (e.g., Formspree, ConvertKit) and used solely to send Atlasmc launch updates. You can unsubscribe at any time from any message.</li>
+    </ul>
+
+    <h2 class="text-2xl font-semibold tracking-tight mt-12 mb-3">The desktop app</h2>
+    <ul class="list-disc pl-5 marker:text-[var(--color-accent)] space-y-2 text-neutral-300">
+      <li><strong class="text-neutral-100">No telemetry by default.</strong> The Atlasmc fork removed upstream Arnis&rsquo;s telemetry endpoint entirely. The consent flag in the GUI defaults to off and toggling it on does nothing because the URL is empty.</li>
+      <li>Generation requires fetching map and elevation data from public providers (OpenStreetMap via Overpass, AWS Terrain Tiles, USGS, IGN, GSI, ESA). Those providers receive your bounding box and an Atlasmc User-Agent, but no personal identifiers.</li>
+      <li>Generated worlds and the tile cache are stored locally on your machine. They are not synced anywhere by Atlasmc.</li>
+    </ul>
+
+    <h2 class="text-2xl font-semibold tracking-tight mt-12 mb-3">Token-related disclosure</h2>
+    <p class="text-neutral-300 leading-relaxed">
+      If we eventually deploy a token, on-chain transactions are public by design and
+      out of our control. Wallet addresses interacting with the token contract are
+      visible on the relevant block explorer and any Atlasmc smart-contract logs.
+      Off-chain dashboards we publish for transparency reasons (treasury balance,
+      vesting schedule) will not include personal identifiers, only addresses.
+    </p>
+
+    <h2 class="text-2xl font-semibold tracking-tight mt-12 mb-3">Your rights</h2>
+    <p class="text-neutral-300 leading-relaxed">
+      If you&rsquo;ve given us your email address (e.g., via a newsletter form) you can
+      ask us to delete it at any time by emailing
+      <a href="mailto:kodekaze1@gmail.com" class="text-[var(--color-accent-bright)] underline">kodekaze1@gmail.com</a>.
+      We do not hold any other personal data linked to you.
+    </p>
+
+    <p class="text-sm text-neutral-500 mt-12">
+      This page is intentionally short and human-readable rather than a 5,000-word
+      legal document. If you need a more formal version for compliance reasons in
+      your jurisdiction, please reach out and we&rsquo;ll coordinate.
+    </p>
+  </article>
+</BaseLayout>
