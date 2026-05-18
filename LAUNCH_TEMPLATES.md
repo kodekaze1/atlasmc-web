@@ -57,7 +57,7 @@ Pre-launch commitments we're holding ourselves to:
 ✓ 30+ day public testnet
 ✓ 90+ day bug bounty
 
-Details: https://atlasmc-web.vercel.app/token
+Details: https://atlasmc-web-opal.vercel.app/token
 ```
 
 **Tweet 5 (CTA)**
@@ -71,7 +71,7 @@ Live now:
 → Discord: [LINK]
 
 Or just download Atlasmc free and generate your hometown:
-https://atlasmc-web.vercel.app/download
+https://atlasmc-web-opal.vercel.app/download
 ```
 
 ---
@@ -90,13 +90,13 @@ on top of Arnis. Today the community token launches to fund the next
 chapter — hosted generator, plugin ecosystem, infra, grants.
 
 Quick links:
-• Token page: https://atlasmc-web.vercel.app/token
-• Roadmap: https://atlasmc-web.vercel.app/roadmap
+• Token page: https://atlasmc-web-opal.vercel.app/token
+• Roadmap: https://atlasmc-web-opal.vercel.app/roadmap
 • Whitepaper: [LINK]
 • Audit report: [LINK]
 • Contract: [ADDRESS] on [CHAIN]
 • Buy on [DEX]: [LINK]
-• Download Atlasmc (free, always): https://atlasmc-web.vercel.app/download
+• Download Atlasmc (free, always): https://atlasmc-web-opal.vercel.app/download
 
 Reminders:
 ✓ The desktop app is and stays free, open source, Apache-2.0.
@@ -150,7 +150,7 @@ Nothing immediately. The CONTRIBUTING.md flow is unchanged. PRs are
 welcome on the same terms — Apache-2.0 inbound = outbound, no CLA.
 
 When the plugin marketplace ships (Phase 6 on the
-[roadmap](https://atlasmc-web.vercel.app/roadmap)), plugin authors will
+[roadmap](https://atlasmc-web-opal.vercel.app/roadmap)), plugin authors will
 have a path to monetize via the marketplace if they want to. Core
 contributions to the desktop app remain volunteer-funded by donations,
 sponsors, and treasury grants.
@@ -205,7 +205,7 @@ generation engine plus a few additions:
 • 18 languages
 • Apache-2.0, Rust + Tauri
 
-Free download: https://atlasmc-web.vercel.app/download
+Free download: https://atlasmc-web-opal.vercel.app/download
 
 Source: https://github.com/kodekaze1/atlasmc
 
@@ -243,7 +243,7 @@ Source + binaries: https://github.com/kodekaze1/atlasmc
 Funding model is community-driven via a token (utility, not security)
 that the desktop app doesn't touch — desktop app stays free and
 Apache-2.0 forever. Details if interested:
-https://atlasmc-web.vercel.app/token .
+https://atlasmc-web-opal.vercel.app/token .
 
 Happy to dig into any specific part of the build.
 ```
@@ -284,7 +284,7 @@ Pre-launch commitments we're holding ourselves to:
 
 If you came here from a previous Atlasmc release: thank you. If you're
 new: download the desktop app for free at
-https://atlasmc-web.vercel.app/download and generate your hometown.
+https://atlasmc-web-opal.vercel.app/download and generate your hometown.
 
 — kodekaze1
 ```
@@ -308,10 +308,10 @@ hosted browser version and a plugin ecosystem; the desktop app stays
 free and open-source.
 
 Press kit (logos, screenshots, boilerplate):
-https://atlasmc-web.vercel.app/press
+https://atlasmc-web-opal.vercel.app/press
 
 Token details:
-https://atlasmc-web.vercel.app/token
+https://atlasmc-web-opal.vercel.app/token
 
 Happy to answer questions, send embargoed early access, or arrange a
 demo.

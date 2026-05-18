@@ -8,7 +8,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   // Update this once Vercel gives the production URL.
   // Used by the sitemap integration to build absolute URLs.
-  site: 'https://atlasmc-web.vercel.app',
+  site: 'https://atlasmc-web-opal.vercel.app',
 
   integrations: [sitemap()],
 

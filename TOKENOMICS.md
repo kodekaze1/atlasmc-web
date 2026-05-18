@@ -2,7 +2,7 @@
 
 > **Status: Draft. Nothing here is final, deployed, or for sale.**
 > This document is the long-form companion to the public
-> [/token page](https://atlasmc-web.vercel.app/token). The high-level
+> [/token page](https://atlasmc-web-opal.vercel.app/token). The high-level
 > commitments on the public page are reproduced here verbatim and
 > expanded. Items marked `[FILL IN: ...]` need decisions that haven't
 > been made yet — replace each placeholder with concrete answers
@@ -268,5 +268,5 @@ statements about future utility, performance, or value are
 forward-looking and subject to change. Nothing in this document is
 financial, legal, or tax advice. Consult a licensed professional in
 your jurisdiction before participating in any token-related activity.
-See [Terms](https://atlasmc-web.vercel.app/terms) for the operative
+See [Terms](https://atlasmc-web-opal.vercel.app/terms) for the operative
 agreement.

@@ -1,7 +1,7 @@
 # Contributing to atlasmc-web
 
 Thanks for your interest. This is the source for the Atlasmc marketing
-website at https://atlasmc-web.vercel.app/. The desktop application
+website at https://atlasmc-web-opal.vercel.app/. The desktop application
 itself lives in a separate repo:
 [kodekaze1/atlasmc](https://github.com/kodekaze1/atlasmc).
 
